@@ -11,13 +11,21 @@ pipeline {
             }
         }
         stage('Pull Fresh Code') {
-            steps {
-                script {
-                    // Pull fresh code from the updated Git repository
-                    sh 'git clone https://github.com/prashik536/react-todo-app.git /opt/checkout/react-todo-add'
-                }
+    steps {
+        script {
+            def repoDir = '/opt/checkout/react-todo-add'
+            
+            // Check if the directory exists
+            if (fileExists(repoDir)) {
+                // If it exists, pull changes
+                sh "git -C ${repoDir} pull origin master"
+            } else {
+                // If it doesn't exist, clone the repository
+                sh "git clone https://github.com/prashik536/react-todo-app.git ${repoDir}"
             }
         }
+    }
+}
 
         stage('Build') {
             steps {
