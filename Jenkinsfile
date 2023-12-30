@@ -46,10 +46,8 @@ pipeline {
 
         stage('Upload to S3') {
             steps {
-                script {
-                    // Upload build to S3 using the shared S3 credentials
-                    s3Upload(
-                        credentialsId: 'your-s3-credentials-id',
-                        files: 'dist/**',  // Adjust the path based on your build output
-                        bucket: 'your-s3-bucket',
-                        path: 'optional-path-in-bucket'
+                    s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'prashik1212', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-east-1', showDirectlyInBrowser: false, sourceFile: '', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'bucket', userMetadata: []
+            }
+        }
+    }
+}
