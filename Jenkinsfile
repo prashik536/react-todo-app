@@ -54,7 +54,7 @@ pipeline {
                         entries: [
                             [
                                 bucket: 'prashik1212',
-                                sourceFile: 'build/**/*',
+                                sourceFile: '**/*',
                                 flatten: false,
                                 gzipFiles: false,
                                 storageClass: 'STANDARD',
