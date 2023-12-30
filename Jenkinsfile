@@ -47,7 +47,7 @@ pipeline {
     }
 }
 
-        stage('Upload to S3') {
+         stage('Upload to S3') {
             steps {
                 script {
                     s3Upload(
