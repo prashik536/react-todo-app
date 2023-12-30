@@ -5,8 +5,8 @@ pipeline {
          stage('Set Permissions') {
             steps {
                 script {
-                    // Grant permissions to Jenkins user
-                    sh 'sudo chown -R jenkins:jenkins /opt/checkout'
+                    // Execute the script to change permissions
+                    sh 'sudo /opt/scripts/change_permissions.sh'
                 }
             }
         }
