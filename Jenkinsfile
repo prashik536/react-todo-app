@@ -38,13 +38,14 @@ pipeline {
         }
 
         stage('Deploy using PM2') {
-            steps {
-                script {
-                    // Deploy using PM2
-                    sh 'pm2 start /opt/checkout/react-todo-add/build/app.js --name react-todo-app'
-                }
-            }
+    steps {
+        script {
+            // Deploy using PM2
+            def appPath = '/opt/checkout/react-todo-add/build/app.js'
+            sh "pm2 start ${appPath} --name react-todo-app"
         }
+    }
+}
 
         stage('Upload to S3') {
             steps {
