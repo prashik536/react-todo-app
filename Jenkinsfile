@@ -2,20 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Stop Deployment') {
-            steps {
-                script {
-                    // Check if the process exists before stopping it
-                    def processExists = sh(script: 'pm2 id react-todo-app', returnStatus: true) == 0
-                    if (processExists) {
-                        sh 'pm2 stop react-todo-app'
-                    } else {
-                        echo 'No existing process found. Skipping stop.'
-                    }
-                }
-            }
-        }
-
+        
         stage('Pull Fresh Code') {
             steps {
                 script {
