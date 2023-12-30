@@ -2,7 +2,14 @@ pipeline {
     agent any
 
     stages {
-        
+         stage('Set Permissions') {
+            steps {
+                script {
+                    // Grant permissions to Jenkins user
+                    sh 'sudo chown -R jenkins:jenkins /opt/checkout'
+                }
+            }
+        }
         stage('Pull Fresh Code') {
             steps {
                 script {
