@@ -41,7 +41,7 @@ pipeline {
     steps {
         script {
             // Deploy using PM2
-            def appPath = '/opt/checkout/react-todo-add/build/app.js'
+            def appPath = '/opt/checkout/react-todo-add/build/static/js/main.e9d6ff45.js'
             sh "pm2 start ${appPath} --name react-todo-app"
         }
     }
